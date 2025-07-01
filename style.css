@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-image: url("images/space_background_with_metallic_platform.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+/* 2) sol animat */
+#ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 102px; /* înălțimea exactă a platformei decupate */
+  z-index: 1; /* sub bird/pipe-uri */
+
+  background: url("images/metallic_platform.png")
+    /* numele fișierului cropped */ repeat-x /* doar repetare pe orizontală */ 0
+    bottom; /* poziţia iniţială: 0px din stânga, aliniat jos */
+  background-size: auto 102px; /* păstrează proporția la 102px înălţime */
+
+  animation: scrollGround 3s linear infinite;
+}
+
+@keyframes scrollGround {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -100%;
+  }
+}
+.bird {
+  height: 100px;
+  width: 130px;
+  position: fixed;
+  top: 40vh;
+  left: 30vw;
+  z-index: 100;
+}
+.pipe_sprite {
+  position: fixed;
+  top: 40vh;
+  left: 100vw;
+  height: 70vh;
+  width: 6vw;
+  background: radial-gradient(lightblue 50%, darkblue);
+  border: 5px solid black;
+  z-index: 2;
+}
+.message {
+  position: absolute;
+  z-index: 10;
+  color: black;
+  top: 30%;
+  left: 50%;
+  font-size: 4em;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.messageStyle {
+  background: white;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5%;
+}
+.score {
+  position: fixed;
+  z-index: 10;
+  height: 10vh;
+  font-size: 10vh;
+  font-weight: 100;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.score_val {
+  color: gold;
+  font-weight: bold;
+}
+@media only screen and (max-width: 1080px) {
+  .message {
+    font-size: 50px;
+    top: 50%;
+    white-space: nowrap;
+  }
+  .score {
+    font-size: 8vh;
+  }
+  .bird {
+    width: 120px;
+    height: 90px;
+  }
+  .pipe_sprite {
+    width: 14vw;
+  }
+}
